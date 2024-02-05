@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name, Age, and Profession Form</title>
+</head>
+
+<body>
+
+    <!-- Form -->
+    <form id="nameForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="profession">Profession:</label>
+        <select id="profession" name="profession" required>
+        <option value="it">IT</option>
+        <option value="hospitality">Hospitality</option>
+        <!-- Add more profession options as needed -->
+    </select>
+
+        <button type="button" onclick="displayValues()">Submit</button>
+    </form>
+
+    <!-- Display Div -->
+    <div id="displayDiv"></div>
+
+    <!-- JavaScript -->
+    <script>
+        function displayValues() {
+            // Extract values from input fields
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const age = document.getElementById("age").value;
+
+            // Combine first and last name
+            const fullName = firstName + " " + lastName;
+
+            // Extract profession value
+            const profession = document.getElementById("profession").value;
+
+            // Display values in the div
+            const displayDiv = document.getElementById("displayDiv");
+            displayDiv.innerHTML = `Full Name: ${fullName}<br>Age: ${age}`;
+
+            // Change text color based on the length of the full name
+            displayDiv.style.color = fullName.length > 5 ? "green" : "red";
+
+            // Change background color based on the selected profession
+            switch (profession) {
+                case "it":
+                    displayDiv.style.backgroundColor = "purple";
+                    break;
+                case "hospitality":
+                    displayDiv.style.backgroundColor = "yellow";
+                    break;
+                    // Add more cases for other professions as needed
+                default:
+                    displayDiv.style.backgroundColor = "white"; // Default background color
+            }
+        }
+    </script>
+
+</body>
+
+</html>
